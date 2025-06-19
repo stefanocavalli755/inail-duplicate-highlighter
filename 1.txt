@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Evidenzia Parole Doppie",
+  "version": "1.0",
+  "description": "Evidenzia parole ripetute consecutivamente nelle pagine web.",
+  "permissions": ["scripting", "activeTab"],
+  "action": {
+    "default_title": "Evidenzia parole doppie",
+    "default_icon": {
+      "16": "icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

@@ -1,0 +1,17 @@
+function highlightRepeatedWords(node) {
+  if (node.nodeType === Node.TEXT_NODE) {
+    const regex = /\b(\w+)\s+\1\b/gi;
+    const text = node.nodeValue;
+    if (regex.test(text)) {
+      const span = document.createElement('span');
+      span.innerHTML = text.replace(regex, '<mark>$&</mark>');
+      node.replaceWith(span);
+    }
+  } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE') {
+    for (let child of Array.from(node.childNodes)) {
+      highlightRepeatedWords(child);
+    }
+  }
+}
+
+highlightRepeatedWords(document.body);
